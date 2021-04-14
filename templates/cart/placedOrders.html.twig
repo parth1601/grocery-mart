@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroceryMart | Cart{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">        
+        {% if cart is empty %}
+            <div class="alert alert-info" style="margin-top: 200px;">
+                You yet not place any Order. Go to the <a href="{{ path('index') }}">product list</a>.
+            </div>
+        {% else %}
+            <div class="row mt-4">
+                <!-- List of items -->
+                <div class="col-md-8">
+                    <div class="card">
+                        <br/>
+                        <ul class="list-group list-group-flush">
+                            {% for c in cart %}
+                                <li class="list-group-item d-flex">
+                                    <b>Order Id : {{ c.id }}</b>
+                                    <br/>
+                                    Order Status : {{ c.status }}
+                                    {% for r in c.items %}
+                                        <div class="flex-fill mr-2">
+                                            <img src="/images/product/{{ r.product.productImage }}" width="64" alt="Product image">
+                                        </div>
+                                        <div class="flex-fill mr-2">
+                                            {{ r.product.productName }}
+                                            <div class="form-inline mt-2">
+                                                <div class="form-group mb-0 mr-2">
+                                                    Quantity : {{ r.quantity }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-fill mr-2 text-left">
+                                            Product Price : ₹ {{ r.product.priceAfter /100  }}
+                                        </div>
+                                    {% endfor %}
+                                    <div class="flex-fill mr-2 text-right">
+                                        <b>Order Total Amount : ₹ {{ c.total }}</b>
+                                    </div>
+                                </li>
+                                <br/>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    
+{% endblock %}

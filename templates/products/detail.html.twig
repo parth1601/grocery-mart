@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroceryMart | Product {% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+   <script type="text/javascript" src="{{ asset('js/productDetails.js') }}"></script>
+{% endblock %}
+{% block body %}
+<!-- catg header banner section -->
+  <section id="aa-catg-head-banner">
+   <img src="{{ asset('frontend/img/fashion/fashion-header-bg-8.jpg') }}" alt="fashion img">
+   <div class="aa-catg-head-banner-area">
+     <div class="container">
+      <div class="aa-catg-head-banner-content">
+        <h2>{{ product.category }}</h2>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>         
+          <li><a href="#">Product</a></li>
+          <li class="active">{{ product.productName }}</li>
+        </ol>
+      </div>
+     </div>
+   </div>
+  </section>
+  <!-- / catg header banner section -->
+<!-- product category -->
+  <section id="aa-product-details">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-product-details-area">
+            <div class="aa-product-details-content">
+              <div class="row">
+                <!-- Modal view slider -->
+                <div class="col-md-5 col-sm-5 col-xs-12">                              
+                  <div class="aa-product-view-slider">                                
+                    <div id="demo-1" class="simpleLens-gallery-container">
+                      <div class="simpleLens-container" id="productDetailsImage">
+                        <div class="simpleLens-big-image-container"><a data-lens-image="../../images/product/{{ product.productImage }}" class="simpleLens-lens-image">
+                        <img src="../../images/product/{{ product.productImage }}" class="simpleLens-big-image"></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal view content -->
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                  <div class="aa-product-view-content" id="productViewContent">
+                    <h3>{{ product.productName }}</h3>
+                    <div class="aa-price-block">
+                      <span class="aa-product-view-price">₹ {{ product.priceAfter /100}}</span>
+                      <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                    </div>
+                    <p class="aa-prod-category">
+                        Category: <a href="#">{{ product.category }}</a>
+                      </p>
+                    <div class="aa-prod-quantity">
+                    {{ form_start(form, {'attr': {'class': 'mt-4 p-4 bg-light'}}) }}
+                        <div class="form-group">
+                            {{ form_label(form.quantity) }}
+                            {{ form_widget(form.quantity, {'value':'1',
+                                'attr': {
+                                    'class': 'form-control ' ~ (form.quantity.vars.valid ? '' : 'is-invalid')
+                                }
+                            }) }}
+                            <div class="invalid-feedback">
+                                {{ form_errors(form.quantity) }}
+                            </div>
+                        </div>
+                          {{ form_widget(form.add, {'attr': {'class': 'btn btn-primary w-25'}}) }}
+                    {{ form_end(form) }}
+                      
+                    </div>
+                    
+                    <div class="aa-prod-view-bottom">
+                      {# <a class="aa-add-to-cart-btn" href="#">Wishlist</a>
+                      <a class="aa-add-to-cart-btn" href="#">Compare</a> #}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="aa-product-details-bottom">
+              <ul class="nav nav-tabs" id="myTab2">
+                <li><a href="#description" data-toggle="tab">Description</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="tab-pane fade in active" id="description">
+                  {{ product.productDescription }}
+                </div>
+                
+              
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / product category -->
+  {% endblock %}

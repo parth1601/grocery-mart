@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroceryMart | Cart{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">        
+        {% if cart.items.count > 0 %}
+            <div class="row mt-4">
+                <!-- List of items -->
+                <div class="col-md-8">
+                    {{ form_start(form) }}
+                    <div class="card">
+                        <div class="card-header bg-dark text-white d-flex">
+                            <h5>Items</h5>
+                            <br/>
+                            <div class="ml-auto">
+                                {{ form_widget(form.save, {'attr': {'class': 'btn btn-warning'}}) }}
+                                {{ form_widget(form.clear, {'attr': {'class': 'btn btn-light'}}) }}
+                            </div>
+                        </div>
+                        <br/>
+                        <ul class="list-group list-group-flush">
+                            {% for item in form.items %}
+                                <li class="list-group-item d-flex">
+                                    <div class="flex-fill mr-2">
+                                        <img src="/images/product/{{ item.vars.data.product.productImage }}" width="64" alt="Product image">
+                                    </div>
+                                    <div class="flex-fill mr-2">
+                                        <h5 class="mt-0 mb-0">{{ item.vars.data.product.productName }}</h5>
+                                        <div class="form-inline mt-2">
+                                            <div class="form-group mb-0 mr-2">
+                                                {{ form_widget(item.quantity, {
+                                                    'attr': { 
+                                                        'class': 'form-control form-control-sm ' ~ (item.quantity.vars.valid ? '' : 'is-invalid')
+                                                    }
+                                                }) }}
+                                                <div class="invalid-feedback">
+                                                    {{ form_errors(item.quantity) }}
+                                                </div>
+                                            </div>
+                                            {{ form_widget(item.remove, {'attr': {'class': 'btn btn-dark btn-sm'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="flex-fill mr-2 text-right">
+                                        <b>₹ {{ item.vars.data.product.priceAfter /100  }}</b>
+                                    </div>
+                                </li>
+                                
+                                <br/>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {# {{ dump(form) }} #}
+                    
+                </div>
+                <!-- Summary -->
+                <div class="col-md-4">
+                    <div class="card mt-4 mt-md-0">
+                        <h5 class="card-header bg-dark text-white">Summary</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <div><b>Total</b></div>
+                                <span><b>₹ {{ cart.total }}</b></span>
+                            </li>
+                        </ul>
+                        <div class="card-body">
+                            {{ form_widget(form.checkout, {'attr': {'class': 'btn btn-warning'}}) }}
+                        </div>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        {% else %}
+            <div class="alert alert-info" style="margin-top: 200px;">
+                Your cart is empty. Go to the <a href="{{ path('index') }}">product list</a>.
+            </div>
+        {% endif %}
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,141 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+        {% block title %}
+        {% endblock %}
+        </title>
+
+        {% block stylesheets %}
+            <link href="{{ asset('frontend/css/font-awesome.css') }}" rel="stylesheet">
+            <link href="{{ asset('frontend/css/bootstrap.css') }}" rel="stylesheet">   
+            <link href="{{ asset('frontend/css/jquery.smartmenus.bootstrap.css') }}" rel="stylesheet">
+            <link href="{{ asset('frontend/css/jquery.simpleLens.css') }}" rel="stylesheet" type="text/css" >    
+            <link href="{{ asset('frontend/css/slick.css') }}" rel="stylesheet" type="text/css" >
+            <link href="{{ asset('frontend/css/nouislider.css') }}" rel="stylesheet" type="text/css" >
+            <link href="{{ asset('frontend/css/theme-color/default-theme.css') }}" id="switcher" rel="stylesheet">
+
+            <link href="{{ asset('frontend/css/sequence-theme.modern-slide-in.css') }}" rel="stylesheet" media="all">
+            <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">    
+            <link href="{{ asset('https://fonts.googleapis.com/css?family=Lato') }}"  rel='stylesheet' type='text/css'>
+            <link href="{{ asset('https://fonts.googleapis.com/css?family=Raleway') }}"  rel='stylesheet' type='text/css'>
+        {% endblock %}
+    </head>
+    <body>
+        {% block loader %}
+            <div id="wpf-loader-two">          
+                <div class="wpf-loader-two-inner">
+                    <span>Loading</span>
+                </div>
+            </div> 
+            <!-- SCROLL TOP BUTTON -->
+            <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+        {% endblock %}
+
+        {% block header %}
+            {{ include('header.html.twig') }}    
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
+
+        {% block login %}
+                <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">                      
+                        <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4>Login or Register</h4>
+                        <div id="loginFormInModel">
+                            <form class="aa-login-form" action="" method="POST">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+                                <label for="inputEmail">Email</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                                
+                                <label for="inputPassword">Password</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                                
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                <button class="aa-browse-btn" type="submit">Login</button>
+                                
+                                <label for="remember_me">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+                                    Keep me logged in
+                                </label>                            
+                                <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+                                <div class="aa-register-now">
+                                    Don't have an account?<a id="register">Register now!</a>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="registrationFormInModel" >{# start registrationform #}
+                        {% if app.user %}
+                        {% else %}
+                        
+                            {% for flashError in app.flashes('verify_email_error') %}
+                                <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                            {% endfor %}
+                                    <h1 class="h3 mb-3 font-weight-normal" >Register</h1>
+                                    {{ form_start(registrationForm,{'action': path('app_register')}) }}
+                                        {{ form_label(registrationForm.email, 'Email') }}
+                                        {{ form_widget(registrationForm.email) }}
+                                        <br />
+                                        {{ form_label(registrationForm.plainPassword, 'Password') }}
+                                        {{ form_widget(registrationForm.plainPassword) }}
+                                        <br />
+                                        {{ form_row(registrationForm.agreeTerms) }}
+                                        {{ form_widget(registrationForm.register, {'attr': {'class': 'btn btn-primary w-25'}}) }}
+                                    {{ form_end(registrationForm) }}
+                                    <div class="aa-register-now">
+                                        Already have an account?<a id="loginHere">Login here!</a>
+                                    </div>
+                        {% endif %} 
+                        </div>{# end registration #}
+
+
+
+                        </div>                        
+                    </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+        {% endblock %}
+
+        {% block footer %}
+            {{ include('footer.html.twig') }}
+        {% endblock %}
+            
+        {% block javascripts %}
+            
+            <!-- jQuery library -->
+            <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') }}"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>  
+            <!-- SmartMenus jQuery plugin -->
+            <script type="text/javascript" src="{{ asset('frontend/js/jquery.smartmenus.js') }}"></script>
+            <!-- SmartMenus jQuery Bootstrap Addon -->
+            <script type="text/javascript" src="{{ asset('frontend/js/jquery.smartmenus.bootstrap.js') }}"></script>  
+            
+            <script type="text/javascript" src="{{ asset('js/product.js') }}"></script>
+
+            <!-- To Slider JS -->
+            <script src="{{ asset('frontend/js/sequence.js') }}"></script>
+            <script src="{{ asset('frontend/js/sequence-theme.modern-slide-in.js') }}"></script>  
+            <!-- Product view slider -->
+            <script type="text/javascript" src="{{ asset('frontend/js/jquery.simpleGallery.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('frontend/js/jquery.simpleLens.js') }}"></script>
+            <!-- slick slider -->
+            <script type="text/javascript" src="{{ asset('frontend/js/slick.js') }}"></script>
+            <!-- Price picker slider -->
+            <script type="text/javascript" src="{{ asset('frontend/js/nouislider.js') }}"></script>
+            <!-- Custom js -->
+            <script src="{{ asset('frontend/js/custom.js') }}"></script> 
+            <!-- Login Model js -->
+            <script src="{{ asset('js/modal.js') }}"></script>
+        {% endblock %}
+        
+    </body>
+</html>

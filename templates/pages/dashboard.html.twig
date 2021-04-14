@@ -1,0 +1,48 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% block content %}
+    <div class="container">
+        {% block uploadform %}
+            
+        {% endblock %}
+        {# <form method="post" id="import_excel_form" enctype="multipart/form-data">
+            <br/><br/><br/>
+            <span id="message" ></span>
+            <br/>
+            <h1>Import Excel File</h1>
+            <br/><br/>
+            <input type="file" name="import_excel" id="import_excel" />
+            <br/><br/><br/>
+            <input type="submit" name="import" id="import" class="btn btn-primary" value="Import"/>
+        </form> #}
+        {# {% include "templates/pages/productImport.html.twig" %} #}
+    </div>
+    <!-- jQuery library -->
+    <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js') }}"></script>
+    <script>
+    $(document).ready(function(){
+        $('#import_excel_form').on('submit',function(event){
+            console.log("called..!!");
+            
+            event.preventDefault();
+            $.ajax({
+                url:"/admin/import",
+                method:"POST",
+                data:new FormData(this),
+                contentType:false,
+                cache:false,
+                processData:false,
+                beforeSend:function(){
+                    $("#import").attr('disabled','disabled');
+                    $("#import").val('Importing....!!!');
+                },
+                success:function(data){
+                    $("#message").html(data);
+                    $('#import_excel_form')[0].reset();
+                    $("#import").attr('disabled',false);
+                    $("#import").val('Import');
+                }
+            });
+        });
+    });
+    </script>
+{% endblock %}

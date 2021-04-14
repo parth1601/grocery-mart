@@ -1,0 +1,7 @@
+{% extends '@EasyAdmin/crud/new.html.twig' %}
+{% block new_form %}
+    {{ form_start(upload) }}
+        {{ form_widget(upload.uploadedFile) }}
+        {{ form_widget(upload.upload) }}
+    {{ form_end(upload) }}
+{% endblock %}

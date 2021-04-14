@@ -1,0 +1,18 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        brandImg:
+            uri_prefix:         /images/brands
+            upload_destination: '%kernel.project_dir%/public/images/brands'
+            inject_on_load: false
+        
+        productImg:
+            uri_prefix:         /images/product
+            upload_destination: '%kernel.project_dir%/public/images/product'
+            inject_on_load: false
+
+        fileNameMapping:
+            uri_prefix:         /admin/files
+            upload_destination: '%kernel.project_dir%/public/admin/files'
+            inject_on_load: false

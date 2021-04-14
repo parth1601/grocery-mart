@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroceryMart | Home {% endblock %}
+
+{% block body %}
+
+    {% block _slider %}
+        {{ include('pages/_slider.html.twig') }} 
+    {% endblock %}
+
+    {% block _promo %}
+        {{ include('pages/_promo.html.twig') }}
+    {% endblock %}
+
+    {% block _products %}
+        {{ include('pages/_products.html.twig') }}
+    {% endblock %}
+
+    {# {% block ______temp %}
+        {{ include('pages/______temp.html.twig') }}
+    {% endblock %} #}
+
+    {% block _banner %}
+        {{ include('pages/_banner.html.twig') }}
+    {% endblock %}
+
+    {# {% block _popular_category %}
+        {{ include('pages/_popular_category.html.twig') }}
+    {% endblock %} #}
+
+    {% block _support %}
+        {{ include('pages/_support.html.twig') }}
+    {% endblock %}
+
+    {# {% block _testimonial %}
+        {{ include('pages/_testimonial.html.twig') }}
+    {% endblock %} #}
+
+    {# {% block _latest_blog %}
+        {{ include('pages/_latest_blog.html.twig') }}
+    {% endblock %} #}
+
+    {% block _brands %}
+        {{ include('pages/_brands.html.twig') }}
+    {% endblock %}
+
+    {% block _subscribe %}
+        {{ include('pages/_subscribe.html.twig') }}
+    {% endblock %}
+            
+{% endblock %}
