@@ -22,8 +22,8 @@ if ($trustedProxies) {
     Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_AWS_ELB);
 }
 
-$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
-$request = Request::createFromGlobals();
-$response = $kernel->handle($request);
-$response->send();
-$kernel->terminate($request, $response);
+// $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
+// $request = Request::createFromGlobals();
+// $response = $kernel->handle($request);
+// $response->send();
+// $kernel->terminate($request, $response);
