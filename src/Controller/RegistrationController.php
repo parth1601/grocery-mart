@@ -57,26 +57,34 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
-            if($user->isVerified()){
-                return $guardHandler->authenticateUserAndHandleSuccess(
-                    $user,
-                    $request,
-                    $authenticator,
-                    'main' // firewall name in security.yaml
-                );
-            }
+            // if($user->isVerified()){
+            //     return $guardHandler->authenticateUserAndHandleSuccess(
+            //         $user,
+            //         $request,
+            //         $authenticator,
+            //         'main' // firewall name in security.yaml
+            //     );
+            // }
+            // $error = $authenticationUtils->getLastAuthenticationError();
+
+            // $lastUsername = $authenticationUtils->getLastUsername();
+            // $this->render('default/index.html.twig', [
+            //     'last_username' => $lastUsername,
+            //     'error' => $error,
+            //     'registrationForm' => $form->createView(),
+            // ]);
             return $this->redirectToRoute('index');
             
         }
 
-        $error = $authenticationUtils->getLastAuthenticationError();
+        // $error = $authenticationUtils->getLastAuthenticationError();
 
-        $lastUsername = $authenticationUtils->getLastUsername();
-        $this->render('default/index.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-            'registrationForm' => $form->createView(),
-        ]);
+        // $lastUsername = $authenticationUtils->getLastUsername();
+        // $this->render('default/index.html.twig', [
+        //     'last_username' => $lastUsername,
+        //     'error' => $error,
+        //     'registrationForm' => $form->createView(),
+        // ]);
         return $this->redirectToRoute('index');
     }
 
@@ -94,12 +102,20 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('index');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+        // $this->addFlash('success', 'Your email address has been verified.');
+        // $form = $this->createForm(RegistrationFormType::class);
+        // $error = $authenticationUtils->getLastAuthenticationError();
 
-        return $this->redirectToRoute('app_register');
+        // $lastUsername = $authenticationUtils->getLastUsername();
+        // $this->render('default/index.html.twig', [
+        //     'last_username' => $lastUsername,
+        //     'error' => $error,
+        //     'registrationForm' => $form->createView(),
+        // ]);
+        return $this->redirectToRoute('index');
     }
 }

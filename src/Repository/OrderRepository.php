@@ -50,9 +50,9 @@ class OrderRepository extends ServiceEntityRepository
     public function getPlacedOrdersByUserId($id): array
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.status = :status')
+            ->andWhere('o.status != :status')
             ->andWhere('o.userId = :id')
-            ->setParameter('status', 'placed')
+            ->setParameter('status', 'cart')
             ->setParameter('id', $id)
             ->getQuery()
             ->getResult();
