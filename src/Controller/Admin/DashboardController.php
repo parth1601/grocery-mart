@@ -59,7 +59,6 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('GroceryMart')
-            ->setTranslationDomain('messages')
             ;
     }
 
