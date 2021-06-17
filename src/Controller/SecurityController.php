@@ -70,5 +70,5 @@ class SecurityController extends AbstractController
     public function admin_logout()
     {
         
-    }
+    } 
 }

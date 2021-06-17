@@ -197,4 +197,15 @@ class Order
         $this->userId = $userId;
         return $this;
     }
+
+    public function getItemList()
+    {
+        $str="";
+        $counter = 1;
+        foreach ($this->getItems() as $item) {
+           $str.="(".$counter.") ".$item->getProduct()->getProductName()."<br>";
+           $counter++;
+        }
+        return $str;
+    }
 }

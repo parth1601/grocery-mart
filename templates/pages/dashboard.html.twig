@@ -1,48 +1,86 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 {% block content %}
-    <div class="container">
-        {% block uploadform %}
-            
-        {% endblock %}
-        {# <form method="post" id="import_excel_form" enctype="multipart/form-data">
-            <br/><br/><br/>
-            <span id="message" ></span>
-            <br/>
-            <h1>Import Excel File</h1>
-            <br/><br/>
-            <input type="file" name="import_excel" id="import_excel" />
-            <br/><br/><br/>
-            <input type="submit" name="import" id="import" class="btn btn-primary" value="Import"/>
-        </form> #}
-        {# {% include "templates/pages/productImport.html.twig" %} #}
-    </div>
-    <!-- jQuery library -->
-    <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js') }}"></script>
-    <script>
-    $(document).ready(function(){
-        $('#import_excel_form').on('submit',function(event){
-            console.log("called..!!");
-            
-            event.preventDefault();
-            $.ajax({
-                url:"/admin/import",
-                method:"POST",
-                data:new FormData(this),
-                contentType:false,
-                cache:false,
-                processData:false,
-                beforeSend:function(){
-                    $("#import").attr('disabled','disabled');
-                    $("#import").val('Importing....!!!');
+    {% block head_stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('admin/flexmonster/css/styles.css') }}"> 
+        <link href="{{ asset('admin/flexmonster/flexmonster.min.css') }}" rel="stylesheet" type="text/css" />   
+        <link href="{{ asset('admin/flexmonster/theme/lightblue/flexmonster.min.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('admin/flexmonster/css/customCss.css') }}"> 
+    {% endblock %}
+     <section id="app" class="main">
+        {# <button onclick="add()">Add condition</button>
+        <button onclick="remove()">Remove all conditions</button> #}
+        <div class="wrap" >
+            <div id="pivot-container" class="pb-30" >
+            </div>
+        </div>
+        {# <div class="output" id="output"></div> #}
+    </section>
+    {# {% block body_javascript %} #}
+        <script src="{{ asset('admin/flexmonster/flexmonster.js') }}" type="text/javascript"></script>
+        {# <script src="{{ asset('admin/flexmonster/js/customJs.js') }}" type="text/javascript"></script> #}
+        <script>
+            function customizeToolbar(toolbar) { 
+                // get all tabs 
+                var tabs = toolbar.getTabs(); 
+                toolbar.getTabs = function () { 
+                    // delete the first tab 
+                    delete tabs[0];
+                    delete tabs[11];
+                    delete tabs[13];
+                    return tabs; 
+                } 
+            }
+
+            var pivot = new Flexmonster({
+                container: "pivot-container",
+                toolbar: true,
+                beforetoolbarcreated: customizeToolbar,
+                //customizeAPIRequest: customizeAPIRequestFunction,
+
+                report: {
+                    options: {
+                        defaultDateType: "date string",
+                        datePattern: "MMMM d, yyyy",
+                        grid: {
+                            showFilter: false,
+                        },
+                        chart: {
+                            showFilter: false,
+                        }
+                    },
+                    dataSource: {
+                        type: "api",
+                        url: "http://localhost:9500",
+                        index: "order-details",
+                    },
+                    slice: {
+                        rows: [
+                            { 
+                                uniqueName: "created_at",
+                                sort: "desc"
+                            }
+                        ],
+                        measures: [
+                            {
+                                uniqueName: "total_price", 
+                                aggregation: "sum" 
+                            }
+                        ],
+                        reportFilters:[
+                            {
+                                uniqueName: "user_id_id",
+                                filter: {
+                                    members: ["user_id_id.[{{user_id}}]"]
+                                }
+                            }
+                        ]
+                    }
+                
                 },
-                success:function(data){
-                    $("#message").html(data);
-                    $('#import_excel_form')[0].reset();
-                    $("#import").attr('disabled',false);
-                    $("#import").val('Import');
-                }
+                licenseKey: "Z7ZP-XE2I72-682923-136R6E"
             });
-        });
-    });
-    </script>
+        </script>
+    {# {% endblock body_javascript %}         #}
+       
 {% endblock %}

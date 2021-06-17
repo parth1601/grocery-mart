@@ -1,0 +1,860 @@
+﻿@import "..\flexmonster-base.less";
+
+/*-------------------------------------------------------
+|||||||||||||||||||||||||| FONTS ||||||||||||||||||||||||
+---------------------------------------------------------*/
+@font-family: Arial, sans-serif;
+@font-size: 12px;
+@font-size-mobile: 14px;
+
+/*-------------------------------------------------------
+||||||||||||||||||||| THEME COLORS ||||||||||||||||||||||
+---------------------------------------------------------*/
+/* =================== USAGE: ========================== 
+Not used in flexmonster-base.less directly; 
+Used in this file to define bg, border and other colors 
+======================================================== */
+
+/* ======== basic colors, defined for this theme ======= */
+@theme-color: #E9E9E9;
+@theme-color-dark: #DCDCDC;
+@theme-color-superdark: #454545;
+@theme-color-midlight: #CFCFCF; //cdcdcd;
+@theme-color-light: #F5F5F5; //#ebebeb;
+@theme-color-superlight: #f7f7f7;
+@theme-color-supersuperlight: #FFFFFF;
+@theme-color-danger: #F44336;
+
+/* ===== basic grey colors, common for all themes ===== */
+@theme-base-color: #999;
+@theme-base-color-dark: #555;
+@theme-base-color-superdark: #3c3c3c;
+@theme-base-color-midlight: #d5d5d5; //cdcdcd;
+@theme-base-color-light: #e9e9e9; //#ebebeb;
+@theme-base-color-superlight: #f7f7f7;
+@theme-base-color-supersuperlight: #fbfbfb;
+
+/*-------------------------------------------------------
+|||||||||||||||||||||| TEXT COLORS ||||||||||||||||||||||
+---------------------------------------------------------*/
+@theme-text-color: #111;
+@theme-text-color-inverted: #fff;
+@theme-text-color-midlight: #555;
+@theme-text-color-light: #454545;
+@theme-text-color-superlight: #cecece;
+
+/*-------------------------------------------------------
+||||||||||||||||||| TOOLBAR STYLES ||||||||||||||||||||||
+---------------------------------------------------------*/
+@toolbar-text-color: @theme-text-color;
+@toolbar-background-color: @background-ui-element-base-color;
+
+@toolbar-icon-fill-border: @theme-color-superdark;
+@toolbar-icon-fill-background: @theme-color;
+
+@toolbar-dropdown-background-color: @background-ui-element-base-color;
+@toolbar-dropdown-border: @ui-element-border;
+@toolbar-dropdown-element-hover: @ui-background-light;
+@toolbar-dropdown-element-divider: 1px dotted #dcdcdc;
+
+/*-------------------------------------------------------
+|||||||||||||||||| BACKGROUND COLORS ||||||||||||||||||||
+---------------------------------------------------------*/
+@background-base-color: #fff;
+@background-ui-element-base-color: #fff;
+@ui-background-dark: @theme-color-superdark;
+@ui-background: @theme-color-superdark;
+@ui-background-light: #E8E8E8;
+@ui-background-superlight: #F5F5F5;
+
+/*-------------------------------------------------------
+|||||||||||||||||||| BORDER COLORS ||||||||||||||||||||||
+---------------------------------------------------------*/
+@ui-border-color-dark: @theme-base-color-superdark;
+@ui-border-color: @theme-base-color-dark;
+@ui-border-color-light: @theme-text-color;
+@ui-border-color-superlight: @theme-text-color;
+
+/*-------------------------------------------------------
+|||||||||||||||||||||||| BORDERS ||||||||||||||||||||||||
+---------------------------------------------------------*/
+@ui-border-dark: 1px solid @ui-border-color-dark;
+@ui-border: 1px solid @ui-border-color;
+@ui-border-light: 1px solid @theme-text-color;
+@ui-border-superlight: 1px solid @theme-text-color;
+
+/*-------------------------------------------------------
+||||||||||||||||||| GRID SHEET HEADERS|||||||||||||||||||
+---------------------------------------------------------*/
+@grid-sheet-header-text-color: @theme-text-color;
+@grid-sheet-header-color: @theme-color-superlight;
+@grid-sheet-header-border-color: #D2D2D2;
+@grid-sheet-header-border-right: 1px solid @grid-sheet-header-border-color;
+@grid-sheet-header-border-bottom: 1px solid @grid-sheet-header-border-color;
+
+/*-------------------------------------------------------
+||||||||||||||||||||||||| GRID ICONS|||||||||||||||||||||
+---------------------------------------------------------*/
+@grid-icon-color: @theme-color-superdark;
+
+/*-------------------------------------------------------
+|||||||||||||||| GRID TABLE HEADER CELLS|||||||||||||||||
+---------------------------------------------------------*/
+/* ===== table header row ===== */
+@grid-table-header-row-color: @theme-color-superlight;
+@grid-table-header-row-text-color: @theme-text-color;
+@grid-table-header-row-border-color: #D2D2D2;
+@grid-table-header-row-border-right: 1px solid @grid-table-header-row-border-color;
+@grid-table-header-row-border-bottom: 1px solid @grid-table-header-row-border-color;
+
+/* ===== table header column ===== */
+@grid-table-header-column-color: @theme-color;
+@grid-table-header-column-text-color: @theme-text-color;
+@grid-table-header-column-border-color: @theme-color-midlight;
+@grid-table-header-column-border-right: 1px solid @grid-table-header-column-border-color;
+@grid-table-header-column-border-bottom: 1px solid @grid-table-header-column-border-color;
+
+/* ===== table header subtotals row ===== */
+@grid-table-header-total-row-cell-color: @theme-color-superlight;
+@grid-table-header-total-row-cell-text-color: @theme-text-color;
+@grid-table-header-total-row-cell-font-weight: normal;
+@grid-table-header-total-row-cell-border-color: #D2D2D2;
+@grid-table-header-total-row-cell-border-right: 1px solid @grid-table-header-total-row-cell-border-color;
+@grid-table-header-total-row-cell-border-bottom: 1px solid @grid-table-header-total-row-cell-border-color;
+
+/* ===== table header subtotals column ===== */
+@grid-table-header-total-column-cell-color: @theme-color;
+@grid-table-header-total-column-cell-text-color: @theme-text-color;
+@grid-table-header-total-column-cell-font-weight: normal;
+@grid-table-header-total-column-cell-border-color: @theme-color-midlight;
+@grid-table-header-total-column-cell-border-right: 1px solid @grid-table-header-total-column-cell-border-color;
+@grid-table-header-total-column-cell-border-bottom: 1px solid @grid-table-header-total-column-cell-border-color;
+
+/* ===== table header grand total row ===== */
+@grid-table-header-grand-total-row-cell-color: @theme-color;
+@grid-table-header-grand-total-row-cell-text-color: @theme-text-color;
+@grid-table-header-grand-total-row-cell-font-weight: bold;
+@grid-table-header-grand-total-row-cell-border-color: @theme-color-midlight;
+@grid-table-header-grand-total-row-cell-border-right: 1px solid @grid-table-header-grand-total-row-cell-border-color;
+@grid-table-header-grand-total-row-cell-border-bottom: 1px solid @grid-table-header-grand-total-row-cell-border-color;
+
+/* ===== table header grand total column ===== */
+@grid-table-header-grand-total-column-cell-color: @theme-color;
+@grid-table-header-grand-total-column-cell-text-color: @theme-text-color;
+@grid-table-header-grand-total-column-cell-font-weight: bold;
+@grid-table-header-grand-total-column-cell-border-color: @theme-color-midlight;
+@grid-table-header-grand-total-column-cell-border-right: 1px solid @grid-table-header-grand-total-column-cell-border-color;
+@grid-table-header-grand-total-column-cell-border-bottom: 1px solid @grid-table-header-grand-total-column-cell-border-color;
+
+/*-------------------------------------------------------
+|||||||||||||||||||| GRID FILTERS |||||||||||||||||||||||
+---------------------------------------------------------*/
+/* ===== grid filter icon, common for all filter header cells ===== */
+@grid-filter-icon-color: @grid-icon-color;
+
+/* ===== table header filters column area ===== */
+@grid-table-header-filter-column-pane-color: @theme-color;
+@grid-table-header-filter-column-pane-text-color: @theme-text-color;
+@grid-table-header-filter-column-pane-border-color: @theme-color-midlight;
+@grid-table-header-filter-column-pane-border-bottom: 1px solid @grid-table-header-filter-column-pane-border-color;
+@grid-table-header-filter-column-pane-border-right: 1px solid @grid-table-header-filter-column-pane-border-color;
+
+/* ===== table header column filter cell ===== */
+@grid-table-header-filter-column-cell-color: @theme-color;
+@grid-table-header-filter-column-cell-color-hover: darken(@grid-table-header-filter-column-cell-color, 5%);
+@grid-table-header-filter-column-cell-text-color: @theme-text-color;
+@grid-table-header-filter-column-cell-border-color: @theme-color-midlight;
+@grid-table-header-filter-column-cell-border-bottom: 1px solid @grid-table-header-filter-column-cell-border-color;
+@grid-table-header-filter-column-cell-border-right: none;
+
+/* ===== table header row filter cell ===== */
+@grid-table-header-filter-row-cell-color: @theme-color;
+@grid-table-header-filter-row-cell-color-hover: darken(@grid-table-header-filter-row-cell-color, 5%);
+@grid-table-header-filter-row-cell-text-color: @theme-text-color;
+@grid-table-header-filter-row-cell-border-color: @theme-color-midlight;
+@grid-table-header-filter-row-cell-border-bottom: 1px solid @grid-table-header-filter-row-cell-border-color;
+@grid-table-header-filter-row-cell-border-right: 1px solid @grid-table-header-filter-row-cell-border-color;
+
+/* ===== report filter cell ===== */
+@grid-report-filter-cell-color: @theme-color;
+@grid-report-filter-subtext-color: @theme-color-superdark;
+@grid-report-filter-cell-color-hover: darken(@grid-report-filter-cell-color, 5%);
+
+/* ===== flat table filter cell ===== */
+@grid-flat-table-filter-header-color: @theme-color;
+@grid-flat-table-filter-header-text-color: @theme-text-color;
+@grid-flat-table-filter-header-color-hover: darken(@grid-flat-table-filter-header-color, 5%);
+@grid-flat-table-filter-cell-border-color: @theme-color-midlight;
+@grid-flat-table-filter-cell-border-bottom: 1px solid @grid-flat-table-filter-cell-border-color;
+@grid-flat-table-filter-cell-border-right: 1px solid @grid-flat-table-filter-cell-border-color;
+
+/* ===== drill-through table filter cell and empty filter cell styles ===== */
+@grid-table-header-filter-cell-color: @theme-color;
+@grid-table-header-filter-cell-text-color: @theme-text-color;
+@grid-table-header-filter-cell-border-color: @theme-color-midlight;
+@grid-table-header-filter-cell-border-bottom: 1px solid @grid-table-header-filter-cell-border-color;
+@grid-table-header-filter-cell-border-right: 1px solid @grid-table-header-filter-cell-border-color;
+
+/* ======== live filtering header ============= */
+@grid-live-filter-color: @theme-color;
+
+/*-------------------------------------------------------
+||||||||||||||||||||||| GRID CELLS ||||||||||||||||||||||
+---------------------------------------------------------*/
+/* ===== general grid cell style ===== */
+@grid-cell-color: @theme-color-supersuperlight;
+@grid-cell-text-color: @theme-text-color;
+@grid-cell-border-color: @theme-color;
+@grid-cell-border-right: 1px solid @grid-cell-border-color;
+@grid-cell-border-bottom: 1px solid @grid-cell-border-color;
+
+/* ===== subtotal row grid cell style ===== */
+@grid-total-row-cell-color: @grid-cell-color;
+@grid-total-row-cell-text-color: @theme-text-color;
+@grid-total-row-cell-font-weight: bold;
+@grid-total-row-cell-border-color: @grid-cell-border-color;
+@grid-total-row-cell-border-right: 1px solid @grid-total-row-cell-border-color;
+@grid-total-row-cell-border-bottom: 1px solid @grid-total-row-cell-border-color;
+
+/* ===== subtotal column grid cell style ===== */
+@grid-total-column-cell-color: @grid-cell-color;
+@grid-total-column-cell-text-color: @theme-text-color;
+@grid-total-column-cell-font-weight: bold;
+@grid-total-column-cell-border-color: @grid-cell-border-color;
+@grid-total-column-cell-border-right: 1px solid @grid-total-column-cell-border-color;
+@grid-total-column-cell-border-bottom: 1px solid @grid-total-column-cell-border-color;
+
+/* ===== grand total row grid cell style ===== */
+@grid-grand-total-row-cell-color: @theme-color-light;
+@grid-grand-total-row-cell-text-color: @theme-text-color;
+@grid-grand-total-row-cell-font-weight: bold;
+@grid-grand-total-row-cell-border-color: #DaDaDa;
+@grid-grand-total-row-cell-border-right: 1px solid @grid-grand-total-row-cell-border-color;
+@grid-grand-total-row-cell-border-bottom: 1px solid @grid-grand-total-row-cell-border-color;
+
+/* ===== grand total column grid cell style ===== */
+@grid-grand-total-column-cell-color: @grid-cell-color;
+@grid-grand-total-column-cell-text-color: @theme-text-color;
+@grid-grand-total-column-cell-font-weight: bold;
+@grid-grand-total-column-cell-border-color: @grid-cell-border-color;
+@grid-grand-total-column-cell-border-right: 1px solid @grid-grand-total-column-cell-border-color;
+@grid-grand-total-column-cell-border-bottom: 1px solid @grid-grand-total-column-cell-border-color;
+
+/* ===== grand total row-column intersection grid cell style ===== */
+@grid-grand-total-row-column-cell-color: @grid-grand-total-row-cell-color;
+@grid-grand-total-row-column-cell-text-color: @theme-text-color;
+@grid-grand-total-row-column-cell-font-weight: bold;
+@grid-grand-total-row-column-cell-border-color: @grid-grand-total-row-cell-border-color;
+@grid-grand-total-row-column-cell-border-right: 1px solid @grid-grand-total-row-column-cell-border-color;
+@grid-grand-total-row-column-cell-border-bottom: 1px solid @grid-grand-total-row-column-cell-border-color;
+
+/*-------------------------------------------------------
+|||||||||||||||||| GRID DATA SHEET ||||||||||||||||||||||
+---------------------------------------------------------*/
+@grid-data-sheet-border-color: @grid-cell-border-color;
+@grid-data-sheet-border-top: none;
+@grid-data-sheet-border-left: none;
+
+/*-------------------------------------------------------
+||||||||||||||| GRID DRILL-THROUGH LINK |||||||||||||||||
+---------------------------------------------------------*/
+@grid-drilldown-link-text-color: @theme-color-superdark;
+
+/*-------------------------------------------------------
+|||||||||||||||| GRID SELECTION CANVAS ||||||||||||||||||
+---------------------------------------------------------*/
+@grid-selection-canvas-color: rgba(255, 245, 106, 0.2);
+@grid-selection-canvas-border: 1px solid gainsboro;
+
+/*-------------------------------------------------------
+|||||||||||||||| GRID AUTO CALCULATION BAR ||||||||||||||
+---------------------------------------------------------*/
+@grid-auto-calculation-bar: @theme-color-superdark;
+@grid-auto-calculation-bar-text-color: @background-base-color;
+@grid-auto-calculation-bar-text-results-color: @background-base-color;
+
+/*-------------------------------------------------------
+||||||||||||| GRID RESIZE HANDLE & INDICATOR ||||||||||||
+---------------------------------------------------------*/
+@grid-resize-indicator-color: darken(@theme-color-superdark, 5%);
+@grid-resize-handle-color: darken(@theme-color-superdark, 5%);
+
+/*-------------------------------------------------------
+|||||||||||||||||||||||| CHARTS |||||||||||||||||||||||||
+---------------------------------------------------------*/
+@charts-label-font-size: 14px;
+@charts-axis-font-size: 14px;
+@charts-axis-text-color: @theme-text-color;
+@charts-axis-title-color: @theme-text-color;
+@charts-axis-stroke-color: #cccccc;
+@charts-point-fill-color: #FFFFFF;
+@charts-pie-label-color: @theme-text-color;
+
+/*-------------------------------------------------------
+|||||||||||||||||||||||||||| UI |||||||||||||||||||||||||
+---------------------------------------------------------*/
+@ui-component-border: 1px solid #888888;
+@ui-pop-up-border: @ui-border-light;
+@ui-element-border-color: @ui-border-color;
+@ui-element-border: @ui-border-light;
+@ui-element-inner-border: @ui-border-superlight;
+
+/* ================= checkbox style ==================== */
+@ui-element-checkbox-color: #FFFFFF;
+@ui-element-checkbox-font-weight: bold;
+
+/* ===================== text style ==================== */
+@ui-element-text-color: @theme-text-color;
+@ui-element-font-size: 14px;
+
+/* ============== draggable item style ================= */
+@ui-draggable-item-backgound-color: @ui-background-light;
+@ui-draggable-item-text-color: @theme-text-color;
+
+/* ================ button hover colors ================ */
+@ui-btn-dark-color-hover: @theme-text-color;
+@ui-btn-color-hover: @ui-background-light; //#f2f2f2;
+@ui-btn-color-light-hover: @ui-background-superlight;
+@ui-btn-border-radius: 4px;
+
+/* ================= button text style ================= */
+@ui-btn-font-size: 14px;
+@ui-btn-text-color: @theme-base-color-superdark;
+@ui-btn-dark-text-color: @theme-text-color-inverted;
+@ui-btn-light-text-color: @theme-text-color;
+@ui-btn-toggle-text-color: @theme-text-color;
+@ui-btn-toggle-selected-text-color: @ui-element-text-color;
+@ui-btn-toggle-dark-text-color: @ui-element-text-color;
+@ui-btn-toggle-dark-selected-text-color: @theme-text-color-inverted;
+@ui-btn-calc-text-color: @theme-text-color-inverted;
+
+/* ==================== icon style ===================== */
+@ui-icon-color: @theme-text-color;
+@ui-icon-color-dark: #000;
+@ui-alert-icon-color: #FFFFFF;
+
+/* ====================== label style ================== */
+@ui-label-color-dark: @theme-color-superdark;
+@ui-label-color: @theme-text-color;
+@ui-label-color-light: @theme-text-color;
+@ui-label-font-size: 14px;
+
+/* =================== text area style ================= */
+@ui-text-area-color: @ui-element-text-color;
+@ui-text-area-background-color: @theme-color-supersuperlight;
+
+/* ====================== titles style ================= */
+@ui-title-color: @theme-text-color;
+@ui-title-font-size: 24px;
+@ui-title-font-size-smaller: 18px;
+@ui-subtitle-color: @ui-label-color-light;
+@ui-subtitle-font-size: @ui-label-font-size;
+
+/* ====================== prompt style ================= */
+@ui-prompt-color: #555555;
+@ui-prompt-icon-color: @ui-border-color-superlight;
+
+/*-------------------------------------------------------
+||||||||||| ADDITIONAL STYLES FOR THIS THEME ||||||||||||
+---------------------------------------------------------*/
+
+#fm-pivot-view,
+#fm-toolbar-wrapper {
+
+    a.fm-ui-btn,
+    button.fm-ui-btn,
+    button.fm-ui-toggle-btn {
+        border-radius: unset;
+    }
+
+    div.fm-ui-dropdown:hover .fm-ui-dropdown-btn .fm-ui-label,
+    div.fm-ui-dropdown .fm-ui-dropdown-list ul li:hover .fm-ui-label,
+    a.fm-ui-checkbox:hover .fm-ui-label,
+    .fm-filter-view .fm-filters-table .fm-filters-table-content .fm-members-filter-list li:hover .fm-ui-label,
+    .fm-ui-context-menu .fm-ui-list li:hover .fm-ui-label,
+    .fm-aggregations-view .fm-ui-list li:hover .fm-ui-label,
+    .fm-fields-view .fm-popup-content .fm-list-wrap .fm-list-content li.fm-checked:hover .fm-text-display,
+    .fm-fields-view .fm-popup-content .fm-list-wrap .fm-list-content li.fm-unchecked:hover .fm-text-display {
+        text-decoration: underline;
+    }
+
+    a.fm-ui-btn,
+    button.fm-ui-btn,
+    button.fm-ui-toggle-btn,
+    button.fm-ui-toggle-btn.fm-sort-btn,
+    button.fm-ui-toggle-btn-dark,
+    .fm-cts-item {
+        &:hover {
+            text-decoration: underline;
+
+            span.fm-ui-label {
+                text-decoration: underline;
+            }
+        }
+
+        &.fm-selected {
+            text-decoration: underline;
+
+            span.fm-ui-label {
+                text-decoration: underline;
+            }
+        }
+
+        &.fm-current {
+            text-decoration: underline;
+        }
+    }
+}
+
+#fm-pivot-view {
+    .fm-calculated-view {
+        .fm-popup-content {
+            .fm-func-btn-group {
+                .fm-calc-action {
+                    &:hover {
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .fm-lst-measures li .fm-aggr-display:after {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .fm-grid-layout {
+        .fm-auto-calculation-bar {
+            border: 1px solid @theme-text-color;
+            height: 18px;
+        }
+    }
+
+    div.fm-ui-datepicker-input {
+        .fm-ui-datepicker-icon {
+            color: @theme-text-color;
+        }
+    }
+}
+
+
+#fm-pivot-view {
+
+    .fm-ui-context-menu .fm-ui-list li.fm-selected:before,
+    .fm-aggregations-view ul.fm-ui-list li.fm-selected:before,
+    div.fm-ui-dropdown .fm-ui-dropdown-list ul li.fm-selected:after,
+    .fm-fields-view .fm-popup-content .fm-list-wrap .fm-list-content .fm-lst-measures .fm-aggr-display:after {
+        color: @theme-text-color;
+        font-weight: bold;
+    }
+}
+
+#fm-pivot-view,
+#fm-toolbar-wrapper {
+
+    :focus,
+    a.fm-ui-btn:focus,
+    button.fm-ui-btn:focus,
+    select:focus,
+    input.fm-ui:focus,
+    .fm-ui-dropdown-btn:focus,
+    .fm-ui-dropdown-list li.fm-current,
+    .fm-ui-dropdown-list li.fm-ui-active,
+    .fm-dropdown-content li.fm-current,
+    .fm-ui-list:focus li.fm-ui-active,
+    .fm-ui-vlist:focus li.fm-ui-active,
+    .fm-calculated-view .fm-popup-content .fm-func-btn-group button.fm-calc-action:focus {
+        outline: dashed @theme-text-color 2px;
+        outline-offset: -2px;
+    }
+
+    a.fm-ui-btn:focus,
+    button.fm-ui-btn:focus,
+    .fm-grid-view:focus,
+    select:focus,
+    .fm-calculated-view .fm-popup-content .fm-func-btn-group .fm-calc-action:focus,
+    .fm-colorpick-btn,
+    .fm-r10c-item,
+    .fm-r4c-item,
+    .fm-calculated-view .fm-popup-content .fm-func-btn-group button.fm-calc-action:focus {
+        outline-offset: 0;
+
+        &.fm-btn-add-measure-2 {
+            outline-offset: -2px;
+        }
+    }
+
+    .fm-grid-layout:focus .fm-sheet-selection-canvas {
+        border: 2px dashed @theme-text-color;
+
+        &.fm-sheet-selection-header,
+        &.fm-clear-border {
+            border: none;
+        }
+
+        &.fm-clear-border-right {
+            border-right: none;
+        }
+
+        &.fm-clear-border-left {
+            border-left: none;
+        }
+
+        &.fm-clear-border-top {
+            border-top: none;
+        }
+
+        &.fm-clear-border-bottom {
+            border-bottom: none;
+        }
+    }
+
+    .fm-ui-list:not(.fm-ui-empty):focus {
+        outline: none;
+        outline-offset: 0;
+    }
+}
+
+#fm-pivot-view div.fm-alert-view {
+
+    .fm-hexagon {
+        display: block;
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background-color: unset;
+        margin: unset;
+        border: 30px solid @ui-background;
+        border-radius: 50%;
+        margin-left: -10px;
+
+        .fm-ui-icon {
+            color: @ui-alert-icon-color;
+            font-size: 38px;
+            padding: 11px;
+            position: absolute;
+            top: -30px;
+            left: -30px;
+        }
+    }
+
+    .fm-hexagon:before,
+    .fm-hexagon:after {
+        content: unset;
+        position: unset;
+        width: unset;
+        border-top: unset;
+        border-bottom: unset;
+    }
+
+    .fm-hexagon:before {
+        left: unset;
+        border-left: unset;
+    }
+
+    .fm-hexagon:after {
+        right: unset;
+        width: unset;
+        border-right: unset;
+    }
+
+    .fm-triangle-wrap {
+        position: relative;
+
+        .fm-ui-icon {
+            color: @ui-alert-icon-color;
+            font-size: 38px;
+            padding: 11px;
+            position: absolute;
+            top: 0px;
+            left: -10px;
+        }
+
+        .fm-triangle {
+            text-align: unset;
+            margin-top: unset;
+            display: block;
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background-color: unset;
+            margin: unset;
+            border: 30px solid @ui-background;
+            border-radius: 50%;
+            margin-left: -10px;
+        }
+
+        .fm-triangle:before,
+        .fm-triangle:after {
+            content: '';
+            position: unset;
+            background-color: unset;
+        }
+
+        .fm-triangle,
+        .fm-triangle:before,
+        .fm-triangle:after {
+            width: unset;
+            height: unset;
+            border-top-right-radius: 50%;
+        }
+
+        .fm-triangle {
+            -webkit-transform: unset;
+            -ms-transform: unset;
+            transform: unset;
+        }
+
+        .fm-triangle:before {
+            -webkit-transform: unset;
+            -ms-transform: unset;
+            transform: unset;
+        }
+
+        .fm-triangle:after {
+            -webkit-transform: unset;
+            -ms-transform: unset;
+            transform: unset;
+        }
+    }
+}
+
+#fm-toolbar-wrapper #fm-toolbar .fm-dropdown-content:after,
+#fm-pivot-view .fm-filter-view .fm-filter-btn .fm-ui-arrow-up:after,
+#fm-pivot-view div.fm-ui-dropdown .fm-ui-dropdown-list:after,
+#fm-toolbar-wrapper .fm-toolbar-ui .fm-colorpick-popup.fm-arrow-up:after {
+    content: "\e911";
+    border-width: unset;
+    border-color: unset;
+    border-style: unset;
+    border-style: unset;
+    top: 4px;
+    width: 0;
+    height: 0;
+    transform: rotate(-90deg);
+    font-family: flexmonster-icons;
+    font-weight: normal;
+    font-size: 15px;
+    color: #454545;
+    position: absolute;
+}
+
+#fm-pivot-view .fm-filter-view .fm-filter-btn .fm-ui-arrow-up:after {
+    top: 2px;
+    left: 40%;
+}
+
+#fm-toolbar-wrapper .fm-toolbar-ui .fm-colorpick-popup.fm-arrow-up:after {
+    left: 48%;
+}
+
+#fm-pivot-view div.fm-ui-dropdown .fm-ui-dropdown-list:after {
+    left: 45%;
+}
+
+#fm-toolbar-wrapper #fm-toolbar .fm-dropdown-content:before,
+#fm-pivot-view .fm-filter-view .fm-filter-btn .fm-ui-arrow-up:before,
+#fm-pivot-view div.fm-ui-dropdown .fm-ui-dropdown-list:before,
+#fm-toolbar-wrapper .fm-toolbar-ui .fm-colorpick-popup.fm-arrow-up:before {
+    content: "";
+    border-color: unset;
+    border-style: unset;
+    border-width: unset;
+}
+
+#fm-pivot-view .fm-filter-view .fm-filters-table .fm-filters-table-header .fm-search-wrap:hover,
+#fm-pivot-view .fm-fields-view .fm-popup-content .fm-list-wrap .fm-list-header .fm-search-wrap:hover {
+    background: #FFFFFF;
+}
+
+#fm-pivot-view .fm-filter-view .fm-filters-table .fm-filters-table-header .fm-search-wrap .fm-search-btn:hover {
+    text-decoration: underline;
+}
+
+#fm-pivot-view .fm-filter-view .fm-filters-table .fm-filters-table-header .fm-search-wrap .fm-icon-act_close:hover,
+#fm-pivot-view .fm-fields-view .fm-popup-content .fm-list-wrap .fm-list-header .fm-search-wrap .fm-icon-act_close:hover {
+    &:before {
+        font-weight: bold;
+        top: 6px;
+    }
+}
+
+#fm-toolbar-wrapper .fm-icon-act_trash:hover {
+    &:before {
+        font-weight: bold;
+    }
+}
+
+#fm-toolbar-wrapper .fm-toolbar-ui .fm-button-add .fm-icon {
+    &:hover:before {
+        font-size: 35px;
+    }
+}
+
+
+
+/*-----------------------------------------------------------------
+||||||||||| ADDITIONAL STYLES TO OVERRIDE OTHER THEMES ||||||||||||
+-----------------------------------------------------------------*/
+
+#fm-pivot-view .fm-data-sheet {
+    .fm-row {
+        .fm-cell.fm-total.fm-grand-total-c.fm-total-r:not(.fm-grand-total-r) {
+            background-color: @grid-cell-color;
+            border-bottom: @grid-cell-border-bottom;
+        }
+
+        .fm-cell.fm-level-0:not(.fm-grand-total) {
+            background-color: @grid-cell-color;
+            border-bottom: @grid-cell-border-bottom;
+        }
+
+        .fm-cell.fm-level-0.fm-grand-total-c:not(.fm-grand-total-r) {
+            background-color: @grid-cell-color;
+            border-bottom: @grid-cell-border-bottom;
+        }
+
+        .fm-cell.fm-total.fm-total-c.fm-total-r:not(.fm-grand-total) {
+            background-color: @grid-total-row-cell-color;
+            border-bottom: @grid-cell-border-bottom;
+        }
+    }
+}
+
+#fm-pivot-view .fm-rows-sheet {
+    .fm-row {
+
+        .fm-cell.fm-header.fm-header-r.fm-total-r:not(.fm-grand-total),
+        .fm-cell.fm-level-0:not(.fm-grand-total) {
+            background-color: @grid-table-header-total-row-cell-color;
+            border-bottom: @grid-table-header-total-row-cell-border-bottom;
+            color: @grid-table-header-total-row-cell-text-color;
+
+            i.fm-icon:before {
+                color: @grid-cell-text-color;
+            }
+
+            span.fm-hierarchy-link {
+                color: @grid-cell-text-color;
+            }
+        }
+    }
+}
+
+#fm-pivot-view .fm-cols-sheet .fm-scroll-content {
+
+    div:last-child {
+        .fm-cell:not(.fm-empty) {
+            background-color: @grid-table-header-grand-total-column-cell-color;
+            border-right: @grid-table-header-grand-total-column-cell-border-right;
+            border-bottom: @grid-table-header-grand-total-column-cell-border-bottom;
+        }
+
+        .fm-cell.fm-sheet-header {
+            background-color: @grid-sheet-header-color;
+            border-right: @grid-sheet-header-border-right;
+            border-bottom: @grid-sheet-header-border-bottom;
+        }
+    }
+
+    span.fm-hierarchy-link {
+        color: @grid-drilldown-link-text-color;
+    }
+}
+
+#fm-pivot-view .fm-data-sheet .fm-scroll-content {
+
+    .fm-row {
+        .fm-cell[data-n="even"]:not(.fm-empty):not(.fm-grand-total-r) {
+            background-color: @grid-cell-color;
+        }
+    }
+
+}
+
+#fm-pivot-view .fm-cols-sheet .fm-scroll-content {
+    div:last-child {
+        .fm-cell.fm-header:not(.fm-empty) {
+            border-bottom: @grid-table-header-column-border-bottom;
+            background-color: @grid-table-header-column-color;
+        }
+    }
+}
+
+#fm-pivot-view .fm-sheet-headers,
+#fm-pivot-view .fm-rows-filter {
+    div:last-child {
+        .fm-cell.fm-header {
+            border-bottom: @grid-table-header-column-border-bottom !important;
+        }
+    }
+}
+
+#fm-pivot-view .fm-grid-layout div.fm-header-c.fm-empty {
+    background-color: @grid-table-header-column-color;
+}
+
+#fm-pivot-view .fm-grid-layout .fm-rows-filter div.fm-header-r.fm-empty {
+    background-color: @grid-table-header-column-color;
+}
+
+#fm-pivot-view .fm-rows-sheet .fm-scroll-content .fm-row {
+    .fm-sheet-header {
+        border-bottom: @grid-sheet-header-border-bottom;
+        color: @grid-sheet-header-text-color;
+        background-color: @grid-sheet-header-color;
+    }
+}
+
+#fm-pivot-view .fm-cols-sheet .fm-scroll-content {
+    .fm-row {
+        .fm-cell:not(.fm-filter-header) {
+
+            background-color: @grid-table-header-column-color;
+            color: @grid-table-header-column-text-color;
+            border-right: @grid-table-header-column-border-right;
+            border-bottom: @grid-table-header-column-border-bottom;
+
+            &.fm-sheet-header {
+                background-color: @grid-sheet-header-color;
+                border-bottom: @grid-sheet-header-border-bottom;
+                color: @grid-sheet-header-text-color;
+            }
+
+            &.fm-empty {
+                background-color: @grid-cell-color;
+                border-right: @grid-cell-border-right;
+                border-bottom: @grid-cell-border-bottom;
+            }
+
+            &.fm-header {
+                background-color: @grid-table-header-column-color;
+                border-right: @grid-table-header-column-border-right;
+                border-bottom: @grid-table-header-column-border-bottom;
+            }
+        }
+    }
+}
+
+#fm-pivot-view {
+    .fm-rows-sheet {
+        .fm-row {
+            .fm-cell[data-n="odd"]:not(.fm-empty) {
+
+                background-color: @grid-table-header-row-color;
+                border-right: @grid-table-header-row-border-right;
+                border-bottom: @grid-table-header-row-border-bottom;
+            }
+
+            .fm-cell[data-n="even"]:not(.fm-empty) {
+                background-color: @grid-table-header-row-color;
+                border-right: @grid-table-header-row-border-right;
+                border-bottom: @grid-table-header-row-border-bottom;
+
+                &.fm-grand-total-r {
+                    background-color: @grid-table-header-grand-total-row-cell-color;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,436 @@
+﻿@import "..\flexmonster-base.less";
+
+/*-------------------------------------------------------
+|||||||||||||||||||||||||| FONTS ||||||||||||||||||||||||
+---------------------------------------------------------*/
+@font-family: Arial, sans-serif;
+@font-size: 12px;
+@font-size-mobile: 14px;
+
+/*-------------------------------------------------------
+||||||||||||||||||||| THEME COLORS ||||||||||||||||||||||
+---------------------------------------------------------*/
+/* =================== USAGE: ========================== 
+Not used in flexmonster-base.less directly; 
+Used in this file to define bg, border and other colors 
+======================================================== */
+
+/* ======== basic colors, defined for this theme ======= */
+@theme-color: #111111;
+@theme-color-dark: #181818;
+@theme-color-superdark: #222222;
+@theme-color-midlight: #2a2a2a; //cdcdcd;
+@theme-color-light: #404040; //#ebebeb;
+@theme-color-superlight: #7a7a7a;
+@theme-color-supersuperlight: #c2c2c2;
+@theme-color-danger: #f44336;
+
+/* ===== basic grey colors, common for all themes ===== */
+@theme-base-color: #999;
+@theme-base-color-dark: #555;
+@theme-base-color-superdark: #3c3c3c;
+@theme-base-color-midlight: #d5d5d5; //cdcdcd;
+@theme-base-color-light: #e9e9e9; //#ebebeb;
+@theme-base-color-superlight: #f7f7f7;
+@theme-base-color-supersuperlight: #fbfbfb;
+
+/*-------------------------------------------------------
+|||||||||||||||||||||| TEXT COLORS ||||||||||||||||||||||
+---------------------------------------------------------*/
+@theme-text-color: #c7b69a;
+@theme-text-color-inverted: #efdab9;
+@theme-text-color-midlight: #fbc02d;
+@theme-text-color-light: #6f6f6f;
+@theme-text-color-superlight: #cecece;
+
+/*-------------------------------------------------------
+||||||||||||||||||| TOOLBAR STYLES ||||||||||||||||||||||
+---------------------------------------------------------*/
+@toolbar-text-color: #aca389;
+@toolbar-background-color: @background-ui-element-base-color;
+
+@toolbar-icon-fill-border: #aca389;
+@toolbar-icon-fill-background: transparent;
+
+@toolbar-dropdown-background-color: @background-ui-element-base-color;
+@toolbar-dropdown-border: @ui-element-border;
+@toolbar-dropdown-element-hover: #6a6a6a4d;
+@toolbar-dropdown-element-divider: 1px dotted #686868;
+
+/*-------------------------------------------------------
+|||||||||||||||||| BACKGROUND COLORS ||||||||||||||||||||
+---------------------------------------------------------*/
+@background-base-color: @theme-color-superdark;
+@background-ui-element-base-color: @theme-color-superdark;
+@ui-background-dark: #fbc02d;
+@ui-background: @ui-background-dark;
+@ui-background-light: #3a3a3a;
+@ui-background-superlight: #2e2e2e;
+
+/*-------------------------------------------------------
+|||||||||||||||||||| BORDER COLORS ||||||||||||||||||||||
+---------------------------------------------------------*/
+@ui-border-color-dark: @theme-color-dark;
+@ui-border-color: #efdab9;
+@ui-border-color-light: #6a6a6a;
+@ui-border-color-superlight: @theme-color-light;
+
+/*-------------------------------------------------------
+|||||||||||||||||||||||| BORDERS ||||||||||||||||||||||||
+---------------------------------------------------------*/
+@ui-border-dark: 1px solid #978c6b;
+@ui-border: 1px solid @ui-border-color-light;
+@ui-border-light: 1px solid @ui-border-color-light;
+@ui-border-superlight: 1px solid @ui-border-color-superlight;
+
+/*-------------------------------------------------------
+||||||||||||||||||| GRID SHEET HEADERS|||||||||||||||||||
+---------------------------------------------------------*/
+@grid-sheet-header-text-color: @theme-text-color-light;
+@grid-sheet-header-color: @theme-color-dark;
+@grid-sheet-header-border-color: @theme-color-midlight;
+@grid-sheet-header-border-right: 1px solid @grid-sheet-header-border-color;
+@grid-sheet-header-border-bottom: 1px dashed @grid-sheet-header-border-color;
+
+/*-------------------------------------------------------
+||||||||||||||||||||||||| GRID ICONS|||||||||||||||||||||
+---------------------------------------------------------*/
+@grid-icon-color: @theme-color-superlight;
+
+/*-------------------------------------------------------
+|||||||||||||||| GRID TABLE HEADER CELLS|||||||||||||||||
+---------------------------------------------------------*/
+/* ===== table header row ===== */
+@grid-table-header-row-color: @theme-color-dark;
+@grid-table-header-row-text-color: @theme-text-color-inverted;
+@grid-table-header-row-border-color: @theme-color-midlight;
+@grid-table-header-row-border-right: 1px solid @grid-table-header-row-border-color;
+@grid-table-header-row-border-bottom: 1px dashed @grid-table-header-total-row-cell-border-color;
+
+/* ===== table header column ===== */
+@grid-table-header-column-color: @theme-color-superdark;
+@grid-table-header-column-text-color: @theme-text-color-inverted;
+@grid-table-header-column-border-color: #343434;
+@grid-table-header-column-border-right: 1px solid @grid-table-header-column-border-color;
+@grid-table-header-column-border-bottom: 1px dashed @grid-table-header-column-border-color;
+
+/* ===== table header subtotals row ===== */
+@grid-table-header-total-row-cell-color: @theme-color-dark;
+@grid-table-header-total-row-cell-text-color: @theme-text-color-inverted;
+@grid-table-header-total-row-cell-font-weight: normal;
+@grid-table-header-total-row-cell-border-color: @theme-color-midlight;
+@grid-table-header-total-row-cell-border-right: 1px solid @grid-table-header-total-row-cell-border-color;
+@grid-table-header-total-row-cell-border-bottom: 1px dashed @grid-table-header-total-row-cell-border-color;
+
+/* ===== table header subtotals column ===== */
+@grid-table-header-total-column-cell-color: @theme-color-superdark;
+@grid-table-header-total-column-cell-text-color: @theme-text-color-inverted;
+@grid-table-header-total-column-cell-font-weight: normal;
+@grid-table-header-total-column-cell-border-color: #343434;
+@grid-table-header-total-column-cell-border-right: 1px solid @grid-table-header-total-column-cell-border-color;
+@grid-table-header-total-column-cell-border-bottom: 1px dashed @grid-table-header-total-column-cell-border-color;
+
+/* ===== table header grand total row ===== */
+@grid-table-header-grand-total-row-cell-color: @theme-color-dark;
+@grid-table-header-grand-total-row-cell-text-color: @theme-text-color-midlight;
+@grid-table-header-grand-total-row-cell-font-weight: bold;
+@grid-table-header-grand-total-row-cell-border-color: @theme-color-midlight;
+@grid-table-header-grand-total-row-cell-border-right: 1px solid @grid-table-header-grand-total-row-cell-border-color;
+@grid-table-header-grand-total-row-cell-border-bottom: 1px dashed @grid-table-header-grand-total-row-cell-border-color;
+
+/* ===== table header grand total column ===== */
+@grid-table-header-grand-total-column-cell-color: @theme-color-superdark;
+@grid-table-header-grand-total-column-cell-text-color: @theme-text-color-midlight;
+@grid-table-header-grand-total-column-cell-font-weight: bold;
+@grid-table-header-grand-total-column-cell-border-color: #343434;
+@grid-table-header-grand-total-column-cell-border-right: 1px solid @grid-table-header-grand-total-column-cell-border-color;
+@grid-table-header-grand-total-column-cell-border-bottom: 1px dashed @grid-table-header-grand-total-column-cell-border-color;
+
+/*-------------------------------------------------------
+|||||||||||||||||||| GRID FILTERS |||||||||||||||||||||||
+---------------------------------------------------------*/
+/* ===== grid filter icon, common for all filter header cells ===== */
+@grid-filter-icon-color: @grid-icon-color;
+
+/* ===== table header filters column area ===== */
+@grid-table-header-filter-column-pane-color: @theme-color-superdark;
+@grid-table-header-filter-column-pane-text-color: @theme-text-color-midlight;
+@grid-table-header-filter-column-pane-border-color: #343434;
+@grid-table-header-filter-column-pane-border-bottom: 1px dashed @grid-table-header-filter-column-pane-border-color;
+@grid-table-header-filter-column-pane-border-right: 1px solid @grid-table-header-filter-column-pane-border-color;
+
+/* ===== table header column filter cell ===== */
+@grid-table-header-filter-column-cell-color: @theme-color-superdark;
+@grid-table-header-filter-column-cell-color-hover: darken(@grid-table-header-filter-column-cell-color,
+    5%);
+@grid-table-header-filter-column-cell-text-color: @theme-text-color-midlight;
+@grid-table-header-filter-column-cell-border-color: #343434;
+@grid-table-header-filter-column-cell-border-bottom: 1px dashed @grid-table-header-filter-column-cell-border-color;
+@grid-table-header-filter-column-cell-border-right: none;
+
+/* ===== table header row filter cell ===== */
+@grid-table-header-filter-row-cell-color: @theme-color-superdark;
+@grid-table-header-filter-row-cell-color-hover: darken(@grid-table-header-filter-row-cell-color,
+    5%);
+@grid-table-header-filter-row-cell-text-color: @theme-text-color-midlight;
+@grid-table-header-filter-row-cell-border-color: #343434;
+@grid-table-header-filter-row-cell-border-bottom: 1px dashed @grid-table-header-filter-row-cell-border-color;
+@grid-table-header-filter-row-cell-border-right: 1px solid @grid-table-header-filter-row-cell-border-color;
+
+/* ===== report filter cell ===== */
+@grid-report-filter-cell-color: @theme-color-superdark;
+@grid-report-filter-subtext-color: @theme-text-color-light;
+@grid-report-filter-cell-color-hover: darken(@grid-report-filter-cell-color,
+    5%);
+
+/* ===== flat table filter cell ===== */
+@grid-flat-table-filter-header-color: @theme-color-superdark;
+@grid-flat-table-filter-header-text-color: @theme-text-color-midlight;
+@grid-flat-table-filter-header-color-hover: darken(@grid-flat-table-filter-header-color,
+    5%);
+@grid-flat-table-filter-cell-border-color: #343434;
+@grid-flat-table-filter-cell-border-bottom: 3px solid @theme-color-light;
+@grid-flat-table-filter-cell-border-right: 1px solid @grid-flat-table-filter-cell-border-color;
+
+/* ===== drill-through table filter cell and empty filter cell styles ===== */
+@grid-table-header-filter-cell-color: @theme-color-superdark;
+@grid-table-header-filter-cell-text-color: @theme-text-color-midlight;
+@grid-table-header-filter-cell-border-color: #343434;
+@grid-table-header-filter-cell-border-bottom: 1px dashed @grid-table-header-filter-cell-border-color;
+@grid-table-header-filter-cell-border-right: 1px solid @grid-table-header-filter-cell-border-color;
+
+/* ======== live filtering header ============= */
+@grid-live-filter-color: @theme-color-superdark;
+
+/*-------------------------------------------------------
+||||||||||||||||||||||| GRID CELLS ||||||||||||||||||||||
+---------------------------------------------------------*/
+/* ===== general grid cell style ===== */
+@grid-cell-color: @theme-color;
+@grid-cell-text-color: @theme-text-color-inverted;
+@grid-cell-border-color: @theme-color-midlight;
+@grid-cell-border-right: 1px solid @grid-cell-border-color;
+@grid-cell-border-bottom: 1px dashed @grid-cell-border-color;
+
+/* ===== subtotal row grid cell style ===== */
+@grid-total-row-cell-color: @theme-color;
+@grid-total-row-cell-text-color: @theme-text-color-inverted;
+@grid-total-row-cell-font-weight: normal;
+@grid-total-row-cell-border-color: @theme-color-midlight;
+@grid-total-row-cell-border-right: @grid-cell-border-right;
+@grid-total-row-cell-border-bottom: @grid-cell-border-bottom;
+
+/* ===== subtotal column grid cell style ===== */
+@grid-total-column-cell-color: @theme-color;
+@grid-total-column-cell-text-color: @theme-text-color-inverted;
+@grid-total-column-cell-font-weight: normal;
+@grid-total-column-cell-border-color: @theme-color-midlight;
+@grid-total-column-cell-border-right: @grid-cell-border-right;
+@grid-total-column-cell-border-bottom: @grid-cell-border-bottom;
+
+/* ===== grand total row grid cell style ===== */
+@grid-grand-total-row-cell-color: @theme-color;
+@grid-grand-total-row-cell-text-color: @theme-text-color-inverted;
+@grid-grand-total-row-cell-font-weight: bold;
+@grid-grand-total-row-cell-border-color: @theme-color-midlight;
+@grid-grand-total-row-cell-border-right: @grid-cell-border-right;
+@grid-grand-total-row-cell-border-bottom: @grid-cell-border-bottom;
+
+/* ===== grand total column grid cell style ===== */
+@grid-grand-total-column-cell-color: @theme-color;
+@grid-grand-total-column-cell-text-color: @theme-text-color-inverted;
+@grid-grand-total-column-cell-font-weight: normal;
+@grid-grand-total-column-cell-border-color: @theme-color-midlight;
+@grid-grand-total-column-cell-border-right: @grid-cell-border-right;
+@grid-grand-total-column-cell-border-bottom: @grid-cell-border-bottom;
+
+/* ===== grand total row-column intersection grid cell style ===== */
+@grid-grand-total-row-column-cell-color: @grid-grand-total-row-cell-color;
+@grid-grand-total-row-column-cell-text-color: @theme-text-color-midlight;
+@grid-grand-total-row-column-cell-font-weight: bold;
+@grid-grand-total-row-column-cell-border-color: @grid-grand-total-row-cell-border-color;
+@grid-grand-total-row-column-cell-border-right: @grid-cell-border-right;
+@grid-grand-total-row-column-cell-border-bottom: @grid-cell-border-bottom;
+
+/*-------------------------------------------------------
+|||||||||||||||||| GRID DATA SHEET ||||||||||||||||||||||
+---------------------------------------------------------*/
+@grid-data-sheet-border-color: @grid-cell-border-color;
+@grid-data-sheet-border-top: none;
+@grid-data-sheet-border-left: none;
+
+/*-------------------------------------------------------
+||||||||||||||| GRID DRILL-THROUGH LINK |||||||||||||||||
+---------------------------------------------------------*/
+@grid-drilldown-link-text-color: @theme-text-color-light;
+
+/*-------------------------------------------------------
+|||||||||||||||| GRID SELECTION CANVAS ||||||||||||||||||
+---------------------------------------------------------*/
+@grid-selection-canvas-color: rgba(255, 255, 255, 0.19);
+@grid-selection-canvas-border: none;
+
+/*-------------------------------------------------------
+|||||||||||||||| GRID AUTO CALCULATION BAR ||||||||||||||
+---------------------------------------------------------*/
+@grid-auto-calculation-bar: @theme-text-color-midlight;
+@grid-auto-calculation-bar-text-color: @theme-color;
+@grid-auto-calculation-bar-text-results-color: @theme-color-superdark;
+
+/*-------------------------------------------------------
+||||||||||||| GRID RESIZE HANDLE & INDICATOR ||||||||||||
+---------------------------------------------------------*/
+@grid-resize-indicator-color: #fbc02d;
+@grid-resize-handle-color: #fbc02d;
+
+/*-------------------------------------------------------
+|||||||||||||||||||||||| CHARTS |||||||||||||||||||||||||
+---------------------------------------------------------*/
+@charts-label-font-size: 14px;
+@charts-axis-font-size: 14px;
+@charts-axis-text-color: @theme-text-color-inverted;
+@charts-axis-title-color: @theme-text-color-inverted;
+@charts-axis-stroke-color: @ui-border-color-light;
+@charts-point-fill-color: @theme-color-superdark;
+@charts-pie-label-color: @theme-text-color-inverted;
+
+/*-------------------------------------------------------
+|||||||||||||||||||||||||||| UI |||||||||||||||||||||||||
+---------------------------------------------------------*/
+@ui-component-border: 1px solid #686868;
+@ui-pop-up-border: @ui-border-light;
+@ui-element-border-color: @ui-border-color-light;
+@ui-element-border: @ui-border-light;
+@ui-element-inner-border: @ui-border-superlight;
+
+/* ================= checkbox style ==================== */
+@ui-element-checkbox-color: black;
+@ui-element-checkbox-font-weight: bold;
+
+/* ===================== text style ==================== */
+@ui-element-text-color: @theme-text-color;
+@ui-element-font-size: 14px;
+
+/* ============== draggable item style ================= */
+@ui-draggable-item-backgound-color: @theme-color-superdark;
+@ui-draggable-item-text-color: @theme-text-color;
+
+/* ================ button hover colors ================ */
+@ui-btn-dark-color-hover: #ebc25e;
+@ui-btn-color-hover: #404040; //#f2f2f2;
+@ui-btn-color-light-hover: #404040;
+@ui-btn-border-radius: 4px;
+
+/* ================= button text style ================= */
+@ui-btn-font-size: 14px;
+@ui-btn-text-color: @ui-border-color-light;
+@ui-btn-dark-text-color: @theme-color-superdark;
+@ui-btn-light-text-color: @theme-text-color;
+@ui-btn-toggle-text-color: @theme-text-color-light;
+@ui-btn-toggle-selected-text-color: @ui-element-text-color;
+@ui-btn-toggle-dark-text-color: @ui-element-text-color;
+@ui-btn-toggle-dark-selected-text-color: @theme-text-color-inverted;
+@ui-btn-calc-text-color: @theme-color;
+
+/* ==================== icon style ===================== */
+@ui-icon-color: @theme-color-superlight;
+@ui-icon-color-dark: @theme-text-color-inverted;
+@ui-alert-icon-color: #111111;
+
+/* ====================== label style ================== */
+@ui-label-color-dark: @theme-color-dark;
+@ui-label-color: @theme-text-color-inverted;
+@ui-label-color-light: @theme-text-color;
+@ui-label-font-size: 14px;
+
+/* =================== text area style ================= */
+@ui-text-area-color: @ui-element-text-color;
+@ui-text-area-background-color: @theme-color;
+
+/* ====================== titles style ================= */
+@ui-title-color: @theme-text-color-inverted;
+@ui-title-font-size: 24px;
+@ui-title-font-size-smaller: 18px;
+@ui-subtitle-color: @theme-text-color;
+@ui-subtitle-font-size: @ui-label-font-size;
+
+/* ====================== prompt style ================= */
+@ui-prompt-color: @ui-border-color-light;
+@ui-prompt-icon-color: @ui-border-color-superlight;
+
+/*-------------------------------------------------------
+||||||||||| ADDITIONAL STYLES FOR THIS THEME ||||||||||||
+---------------------------------------------------------*/
+
+#fm-pivot-view .fm-cols-sheet .fm-scroll-content {
+  div:last-child {
+    .fm-cell.fm-header:not(.fm-empty) {
+      border-bottom: 3px solid @theme-color-light;
+      background-color: @theme-color-superdark;
+      z-index: 1;
+    }
+  }
+}
+
+#fm-pivot-view .fm-sheet-headers,
+#fm-pivot-view .fm-rows-filter {
+  div:last-child {
+    .fm-cell.fm-header {
+      border-bottom: 3px solid @theme-color-light  !important;
+      z-index: 1;
+    }
+  }
+}
+
+#fm-toolbar-wrapper #fm-toolbar li a:hover svg .fill-border {
+  fill: #efdab9;
+}
+
+#fm-pivot-view div.fm-ui-modal-overlay,
+#fm-toolbar-wrapper div.fm-modal-overlay {
+  background-color: rgba(255, 255, 255, 0.19);
+}
+
+.fm-charts-color-1 {
+  fill: #2b908f;
+}
+
+.fm-charts-color-2 {
+  fill: #90ee7e;
+}
+
+.fm-charts-color-3 {
+  fill: #f45b5b;
+}
+
+.fm-charts-color-4 {
+  fill: #7798bf;
+}
+
+.fm-charts-color-5 {
+  fill: #c13f21;
+}
+
+.fm-charts-color-6 {
+  fill: #ffd152;
+}
+
+.fm-charts-color-7 {
+  fill: #d36e2d;
+}
+
+.fm-charts-color-8 {
+  fill: #659cc8;
+}
+
+.fm-charts-color-9 {
+  fill: #dda032;
+}
+
+.fm-charts-color-10 {
+  fill: #61efce;
+}
+
+.fm-charts-color-11 {
+  fill: none;
+}

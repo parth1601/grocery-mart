@@ -10,6 +10,7 @@ use App\Entity\Products;
 use App\Entity\SubCategory;
 use App\Entity\Tags;
 use App\Entity\Order;
+use App\Entity\OrderItem;
 use App\Entity\UploadedDataFiles;
 use App\Repository\BrandsRepository;
 use App\Repository\CategoryRepository;
@@ -43,16 +44,14 @@ class DashboardController extends AbstractDashboardController
         $this->entityManager = $entityManager;
     }
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin/dashboard", name="admin")
      * 
      * @return Response
      */
     public function index(): Response
     {
-        // $routeBuilder = $this->get(CrudUrlGenerator::class)->build();
-        // return $this->redirect($routeBuilder->setController(Category::class)->generateUrl());
-        return $this->render('pages/dashboard.html.twig',['message'=> " "]);
-        // return parent::index();
+        $user_id = 12;
+        return $this->render('pages/dashboard.html.twig',['user_id'=>$user_id]);
     }
 
     public function configureDashboard(): Dashboard
@@ -85,6 +84,7 @@ class DashboardController extends AbstractDashboardController
             
             MenuItem::section('Order'),
                 MenuItem::linkToCrud('Order', 'fa fa-list', Order::class),
+                MenuItem::linkToCrud('OrderItems', 'fa fa-list' , OrderItem::class),
                 
 		];
     }

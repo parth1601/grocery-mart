@@ -90,9 +90,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             throw new CustomUserMessageAuthenticationException('Email could not be found..!!');
         }
         $role=$user->getRoles();
-        if($role[0]=="ROLE_ADMIN"){
-            throw new CustomUserMessageAuthenticationException('Only Users are allowed...!!');
-        }
+        // if($role[0]=="ROLE_ADMIN"){
+        //     throw new CustomUserMessageAuthenticationException('Only Users are allowed...!!');
+        // }
         if (!$user->isVerified()) {
             throw new CustomUserMessageAuthenticationException('Please check your email and verify your email..!!');
         }

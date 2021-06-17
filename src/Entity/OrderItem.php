@@ -17,7 +17,7 @@ class OrderItem
      * @ORM\Column(type="integer")
      */
     private $id;
-
+ 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank()
@@ -99,5 +99,10 @@ class OrderItem
     public function getTotal(): float
     {
         return $this->getProduct()->getPriceAfter() * $this->getQuantity() /100;
+    }
+
+    public function getProductName()
+    {
+        return $this->product->getProductName();
     }
 }
