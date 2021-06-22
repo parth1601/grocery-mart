@@ -88,4 +88,18 @@ class DashboardController extends AbstractDashboardController
                 
 		];
     }
+
+
+
+
+    /**
+     * @Route("/admin/dashboard/getContext", name="admin-context")
+     * 
+     * @return Response
+     */
+    public function getContext()
+    {
+        $str = "Parth";
+        return new Response($str);
+    }
 }

@@ -18,17 +18,36 @@
     </section>
     {# {% block body_javascript %} #}
         <script src="{{ asset('admin/flexmonster/flexmonster.js') }}" type="text/javascript"></script>
-        {# <script src="{{ asset('admin/flexmonster/js/customJs.js') }}" type="text/javascript"></script> #}
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <script src="{{ asset('admin/flexmonster/js/customJs.js') }}" type="text/javascript"></script>
         <script>
+            
             function customizeToolbar(toolbar) { 
                 // get all tabs 
                 var tabs = toolbar.getTabs(); 
                 toolbar.getTabs = function () { 
                     // delete the first tab 
-                    delete tabs[0];
-                    delete tabs[11];
-                    delete tabs[13];
+                    tabs.unshift({
+                        id: "tabAjax",
+                        title: "Ajax",
+                        handler: tabAjaxHandler,
+                        icon: this.icons.open,
+                    });
+                    delete tabs[1];
+                    //delete tabs[12];
+                    delete tabs[14];
                     return tabs; 
+                }
+                var tabAjaxHandler = function(){
+                    $.ajax({ 
+                        url: "/admin/dashboard/getContext",
+                        type: "POST",
+                        dataType: "text",
+                        success: function(html)
+                        {
+                            $("#tabAjax .fm-tab-label").html(html);
+                        }
+                    });
                 } 
             }
 
@@ -44,6 +63,7 @@
                         datePattern: "MMMM d, yyyy",
                         grid: {
                             showFilter: false,
+                            showReportFiltersArea: false,
                         },
                         chart: {
                             showFilter: false,
